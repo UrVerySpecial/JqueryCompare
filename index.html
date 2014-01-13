@@ -1,0 +1,177 @@
+<!DOCTYPE html
+<html lang="ja">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>ドコモ　スマートフォン紹介</title>	
+   	<link rel="stylesheet" type="text/css" href="./css/style.css">
+   	<link rel="stylesheet" type="text/css" href="./lib/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+	<script src="./js/jquery-1.6.2.min.js"></script>
+	<script src="./js/jquery.bxSlider.min.js"></script>
+	<script src="./js/jquery.easing.1.3.js"></script>
+	<script src="./js/jquery.plugins.js"></script>
+	<script type="text/javascript" src="./lib/fancybox/jquery.fancybox-1.3.4.js"></script>
+	<script type="text/javascript">
+		var imageFolder = "images/tab/";
+		$(function(){
+		$("a[id^=framepage]").fancybox({
+			'width'		: '95%',
+			'height'	: '99%',
+		        'autoScale'     : true,
+			'transitionIn'	: 'none',
+			'transitionOut'	: 'none',
+			'type'		: 'iframe',
+			'transitionIn'	: 'elastic',
+			'transitionOut'	: 'elastic',
+			'easingIn'      : 'easeOutBack',
+			'easingOut'     : 'easeInBack'
+			});
+		});
+		$(function(){
+		  var slider = $('#main_page').bxSlider({
+		  	easing: 'easeOutBounce',
+		    controls: false,
+		    speed: 200,
+		  });
+		  
+		  $('.thumbs a').click(function(){
+		   var thumbIndex = $('.thumbs a').index(this);
+		   console.log("index.html," + (thumbIndex+1)+ "番目タブ押下");
+		    slider.goToSlide(thumbIndex);
+		    console.log((thumbIndex+1) + "番目タブに移動");
+		    $('.thumbs a').removeClass('pager-active');
+		    $(this).addClass('pager-active');
+		    ResetImg(thumbIndex);
+		    
+		   $('#ifr').attr("src", $('#ifr').attr("src"));
+		    clearTimeout(timer1);
+		    return false;
+		  }); 
+		  
+		});
+		function ResetImg(thumbIndex)
+		{
+			for(var i = 1 ; i<=4; i++)
+			{
+				if(i == (thumbIndex+1))
+					$('#tab0' +i).attr("src", imageFolder + "selected_" + $('#tab0' +i).attr("id") + ".jpg");
+				else
+					$('#tab0' +i).attr("src", imageFolder +  $('#tab0' +i).attr("id") + ".jpg");
+			}
+		}
+		function ImgMouseDown(index)
+		{
+			$('#tab0' +index).attr("src", $('#tab0' +index).attr("src").replace(imageFolder, imageFolder + "off_"));
+		}
+		var timer1;
+		function DeviceUp(){
+			$('#link05').click();
+			timer1 = setTimeout( function() {
+				$('#link01').click();
+			}, 8000);
+
+		}
+		function DeviceDown(){
+			$('#link01').click();
+		}
+		$(function(){
+			$("#seting_panel").click(function(){
+				$("#modelselecter").slideToggle();
+			});
+			
+			var dspname = $.Storage.get("dspmdlname");
+			var auto = $.Storage.get("auto");
+			$("#dispmodel").val(dspname);
+			if(auto=="true")
+				$("#auto").attr('checked','checked');
+		});
+		function dispMdlChg(){
+			var mdlmsg = $('#dispmodel').val();
+			var auto = $('#auto').is(':checked');
+			$.Storage.set("dspmdlname", mdlmsg);
+			$.Storage.set("auto", auto.toString());
+			var dspname = $.Storage.get("dspmdlname");
+			if(auto== true )
+				$("#auto").attr('checked','checked');
+			$('iframe#mdlframe').attr('src', "pages/01/"+ mdlmsg + ".html");
+			$('#link01').click();
+		}
+		function SetConnectedModel(modelStr)
+		{
+		
+			$("#dispmodel").val(modelStr);
+			$('#nowDevice').html(modelStr);
+			dispMdlChg();
+		}
+		function UpdateContents()
+		{
+			andjs.UpdateContents();
+			location.href="updateContents.htm";
+		}
+		
+	</script>
+</head>
+<body onLoad="dispMdlChg();">
+<div id="modelselecter" class="hiddenpanel" style="display:none;">
+	<br />&nbsp;
+	<span class="stext">展示機種：</span>
+	<select id="dispmodel">
+		<option value="SH-04E">AQUOS PHONE EX SH-04E /SH-04E</option>
+		<option value="N-04E">MEDIAS X N-04E/N-04E</option>
+		<option value="SO-02E">Xperia(TM) Z SO-02E/SO-02E</option>
+		<option value="F-02E">ARROWS X F-02E/F-02E</option>
+		<option value="HW-03E">Ascend D2 HW-03E/HW-03E</option>
+		<option value="P-02E">ELUGA X P-02E/P-02E</option>
+		<option value="N-05E">MEDIAS W N-05E/N-05E</option>
+		<option value="L-04E">Optimus G Pro L-04E/L-04E</option>
+		<option value="SO-03E">Xperia(TM) Tablet Z SO-03E/SO-03E</option>
+		<option value="dtab">dtab/dtab</option>
+		<option value="SH-05E">スマートフォン for ジュニア SH-05E/SH-05E</option>
+	</select>
+	<span class="stext">自動認識機種：</span>
+	<span id="nowDevice"></span>
+	<span class="stext">自動認識</span>
+	<input type="checkbox" id = "auto" name="auto" value="0">
+	<button onclick="UpdateContents()">コンテンツを更新する</button>
+	<button onclick="dispMdlChg()">設定する</button><br />
+</div>
+
+	<div id="msg" style="width:160px;left:600px;position:absolute;z-index:10">
+		<a id="seting_panel" style="text-decoration:none;color:#ddd;"><!-- →設定パネル -->&nbsp;.&nbsp;</a>
+	</div>
+	<div class = "frame" ><img src="images/tab/main_bg_left.gif"/></div>
+	<div id="main_page">
+		<div id = "tab1" class = "main">
+			<iframe src="pages/01/SH-04E.html" id="mdlframe"></iframe>
+		</div>
+		<div id = "tab2" class = "main">
+			<iframe id="ifr" src="pages/02_List.html"></iframe>
+		</div>
+		<div id = "tab3" class = "main">
+			<iframe src="pages/03_price.html"></iframe>
+		</div>
+		<div id = "tab4" class = "main"><img src="images/04_acc.jpg" id="main4">
+		</div>
+		<div id = "tab5" class = "main">
+			<iframe id="ifr2" name ="ifr2" src="ProductShow/show.html"></iframe>
+		</div>
+	</div>
+	<div class = "frame" ><img src="images/tab/main_bg_right.gif"/></div>
+	<div class="thumbs">
+		<img class="tab_blank" src="images/tab/bg01.jpg"/
+		><a href="" id="link01"><img class = "tab" id="tab01" onmousedown="ImgMouseDown(1)"/></a
+		><img class="tab_blank2" src="images/tab/bg02.jpg"/
+		><a href="" id="link02"><img class = "tab" id="tab02" onmousedown="ImgMouseDown(2)"/></a
+		><img class="tab_blank2" src="images/tab/bg03.jpg"/
+		><a href="" id="link03"><img class = "tab" id="tab03" onmousedown="ImgMouseDown(3)"/></a
+		><img class="tab_blank2" src="images/tab/bg04.jpg"/
+		><a href="" id="link04"><img class = "tab" id="tab04" onmousedown="ImgMouseDown(4)"/></a
+		><img class="tab_blank" src="images/tab/bg05.jpg"/>
+		<a href="" id="link05"></a>
+	</div>
+	<div hidden>
+		<a href="ProductShow/show.html" id="framepage1">
+		</a>
+	</div>
+</body>
+</html>

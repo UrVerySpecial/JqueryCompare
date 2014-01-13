@@ -1,0 +1,94 @@
+* {
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);	
+}
+body {
+   width: 1270px;
+   height: 630px;
+   overflow : auto;
+   padding : 0px;
+   margin : 0px;
+   border : 0;
+}
+.main{
+   width: 1270px;
+   height: 630px;
+   overflow: scroll;
+}
+.head {
+	width: 1270px;
+	height: 160px;
+}
+.blank {
+	height : 20px;
+}
+#table {
+	display:table; 
+	width:1160px;
+	}
+.row {
+	display:table-row;
+	height:313px;
+}
+.col_left {
+	display:table-cell;
+	margin:0px;
+	padding:0px;
+	width:80px;
+	background: url("../images/02/list_left.jpg") -0px 0 no-repeat;
+	background-position:left top;
+}
+.col_right {
+	display:table-cell;
+	margin:0px;
+	padding:0px;
+	width:80px;
+	background: url("../images/02/list_right.jpg") -0px 0 no-repeat;
+	background-position:left top;
+}
+.col {
+	display:table-cell;
+	width:250px;
+	height:140px;
+	margin:0px;
+	padding:0px;
+
+}
+.with {
+	background: url("../images/02/list_title_with.jpg") -0px 0 no-repeat;
+	background-position:left top;
+}
+.next {
+	background: url("../images/02/list_title_next.jpg") -0px 0 no-repeat;
+	background-position:left top;
+}
+.tablet {
+	background: url("../images/02/list_title_tablet.jpg") -0px 0 no-repeat;
+	background-position:left top;
+}
+.junior {
+	background: url("../images/02/list_title_junior.jpg") -0px 0 no-repeat;
+	background-position:left top;
+}
+.item{
+	position: relative;
+	top: 70px;
+	left:60px;
+	align:center;
+	width:140px;
+}
+.pTitle{
+	position: relative;
+	top: 70px;
+	 text-align:center;
+	 font-weight:bold;
+}
+.pDetail{
+	position: relative;
+	top: 85px;
+	 text-align:center;
+	 font-size:small;
+}
+a{ 
+	display: block;
+	text-decoration:none;
+}

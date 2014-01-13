@@ -1,0 +1,167 @@
+* {
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);	
+}
+#title {
+	width: 1270px;
+	height: 60px;
+	background: url("../images/hikaku-2.gif") -0px 0 no-repeat;
+}
+body {
+   width: 1270px;
+   height: 750px;
+   overflow : auto;
+   padding : 0px;
+   margin : 0px;
+   border : 0;
+}
+#main{
+   width: 1270px;
+   height: 540px;
+   overflow: scroll;
+}
+#table {
+	display:table; 
+	width:1160px;
+	}
+.row {
+	display:table-row;
+	height:313px;
+}
+.col_left {
+	display:table-cell;
+	margin:0px;
+	padding:0px;
+	width:80px;
+	background: url("../images/02/list_left.jpg") -0px 0 no-repeat;
+	background-position:left top;
+}
+.col_right {
+	display:table-cell;
+	margin:0px;
+	padding:0px;
+	width:80px;
+	background: url("../images/02/list_right.jpg") -0px 0 no-repeat;
+	background-position:left top;
+}
+.col {
+	display:table-cell;
+	width:250px;
+	height:140px;
+	margin:0px;
+	padding:0px;
+
+}
+.with {
+	background: url("../images/02/list_title_with.jpg") -0px 0 no-repeat;
+	background-position:left top;
+}
+.next {
+	background: url("../images/02/list_title_next.jpg") -0px 0 no-repeat;
+	background-position:left top;
+}
+.tablet {
+	background: url("../images/02/list_title_tablet.jpg") -0px 0 no-repeat;
+	background-position:left top;
+}
+.junior {
+	background: url("../images/02/list_title_junior.jpg") -0px 0 no-repeat;
+	background-position:left top;
+}
+.item{
+	position: relative;
+	top: 70px;
+	left:60px;
+	align:center;
+}
+.pTitle{
+	position: relative;
+	top: 70px;
+	 text-align:center;
+	 font-weight:bold;
+}
+.pDetail{
+	position: relative;
+	top: 85px;
+	 text-align:center;
+	 font-size:small;
+}
+a{ 
+	display: block;
+	text-decoration:none;
+}
+.blank{
+	float : left ; 
+	width : 150px ;
+}
+#selectedItem{
+	height:150px;
+	-moz-border-radius: 25px;
+	-webkit-border-radius: 25px;
+	border-radius: 25px;
+	/*IE 7 AND 8 DO NOT SUPPORT BORDER RADIUS*/
+	-moz-box-shadow: 0px 0px 20px #000000;
+	-webkit-box-shadow: 0px 0px 20px #000000;
+	box-shadow: 0px 0px 20px #000000;
+	/*IE 7 AND 8 DO NOT SUPPORT BLUR PROPERTY OF SHADOWS*/
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#ffe0f4', endColorstr = '#fbfff7');
+	/*INNER ELEMENTS MUST NOT BREAK THIS ELEMENTS BOUNDARIES*/
+	/*Element must have a height (not auto)*/
+	/*All filters must be placed together*/
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr = '#ffe0f4', endColorstr = '#fbfff7')";
+	/*Element must have a height (not auto)*/
+	/*All filters must be placed together*/
+	background-image: -moz-linear-gradient(top, #ffe0f4, #fbfff7);
+	background-image: -ms-linear-gradient(top, #ffe0f4, #fbfff7);
+	background-image: -o-linear-gradient(top, #ffe0f4, #fbfff7);
+	background-image: -webkit-gradient(linear, center top, center bottom, from(#ffe0f4), to(#fbfff7));
+	background-image: -webkit-linear-gradient(top, #ffe0f4, #fbfff7);
+	background-image: linear-gradient(top, #ffe0f4, #fbfff7);
+	-moz-background-clip: padding;
+	-webkit-background-clip: padding-box;
+	background-clip: padding-box;
+	/*Use "background-clip: padding-box" when using rounded corners to avoid the gradient bleeding through the corners*/
+	/*--IE9 WILL PLACE THE FILTER ON TOP OF THE ROUNDED CORNERS--*/
+	
+}
+#btns{
+	position: relative;
+	left: 1050px;
+	top: -130px;
+}
+.run {
+	position: relative;
+	width:100px;
+	text-align:center;
+	font-size:21px;
+	font-family:Arial;
+	font-weight:normal;
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
+	border-radius:8px;
+	padding:9px 18px;
+	text-decoration:none;
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fc8d83', endColorstr='#e4685d');
+	color:#ffffff;
+	display:inline-block;
+	text-shadow:1px 1px 0px #b23e35;
+ 	-webkit-box-shadow:inset 1px 1px 0px 0px #f7c5c0;
+ 	-moz-box-shadow:inset 1px 1px 0px 0px #f7c5c0;
+ 	box-shadow:inset 1px 1px 0px 0px #f7c5c0;
+}
+.ok {
+	top:0px;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #3d94f6), color-stop(100%, #1e62d0) );
+	background:-moz-linear-gradient( center top, #3d94f6 5%, #1e62d0 100% );
+	background:-ms-linear-gradient( top, #3d94f6 5%, #1e62d0 100% );
+	background-color:#3d94f8;	
+	border:1px solid #337fed;
+}
+.cancel {
+	top:50px;
+	left:-143px;
+	border:1px solid #d83526;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #fc8d83), color-stop(100%, #e4685d) );
+	background:-moz-linear-gradient( center top, #fc8d83 5%, #e4685d 100% );
+	background:-ms-linear-gradient( top, #fc8d83 5%, #e4685d 100% );
+	background-color:#fc8d83;
+}

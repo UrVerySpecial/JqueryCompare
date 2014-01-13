@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>[pname]</title>	
+	<script src="../js/jquery-1.9.1.min.js"></script>
+	<script src="../js/jquery-ui-1.10.2.custom.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="../css/jquery-ui-1.10.2.custom.css">
+    <link type="text/css" rel="stylesheet" href="../css/spec.css">
+    <link type="text/css" rel="stylesheet" href="../css/compare_result.css">
+    <script>
+    var titles = {6:"カラーバリエーション",7:"サイズ（mm）",8:"質量（g）",9:"連続待受時間（静止時）",10:"連続通話時間（音声通話時）",11:"ディスプレイ種類",12:"ディスプレイサイズ（インチ）",13:"ディスプレイサイズ（ドット数）",14:"有効画素数（メイン／サブ）",15:"撮影素子（メイン／サブ）",16:"記録画素数（メイン／サブ）",17:"手ぶれ",18:"動画撮影",19:"HDムービー撮影",20:"フルHD",21:"OS",22:"内部メモリ",23:"CPU",24:"Xi",25:"Wi-Fi",26:"テザリング",27:"Flash対応",28:"ワンセグ",29:"外部メモリ",30:"赤外線通信",31:"Bluetooth（R)",32:"防水／防じん",34:"GPS",35:"おサイフケータイ",35:"海外使用"};
+    var items = new Array();
+    var data2;
+	function getRequest(){
+	  if(location.search.length > 1) {
+	    var ret = location.search.substr(1).split("&");
+	    for(var i = 0; i < ret.length; i++) {
+	      var r = ret[i].split("=");
+	      items[i] = r[1];
+	    }
+	  } else {
+	  }
+	}
+	
+	function SetResult(){
+		getRequest();
+		//items = new Array("SH-04E", "SO-03E", "N-05E");
+		ReadTextArea();
+		buildtbl();
+	}
+	function ReadTextArea()
+	   {
+			var str = $("textarea").val();
+			str = str.replace( /\r\n/g , "\n" );		//IE対策　改行コード\r\nを\rに変換
+			str = str.replace( /^(\n+)|(\n+)$/g , "" );	//文頭と文末の余計な改行を除去
+			var arr = str.split( /\n/g );				//改行で分割
+			var data = [];
+			data2 = new Array();
+			var reg = /[,\t]/g;							//タブまたはカンマで分割
+			for( var i = 0 , l = arr.length ; i < l ; i++ ){
+				data[i] = arr[i].split( reg );
+				for(var k = 0; k < items.length; k++){
+					if(data[i][4] == items[k])
+					{
+						data2[k] = new Array();
+						for( var j = 0 , m = data[i].length ; j < m ; j++ ){
+							data2[k][j] = data[i][j].replace( /(^\s+)|(\s+$)/g , ""  );
+						}
+					}
+				}
+			}
+	   }
+	   
+	function buildtbl() { 
+		var body = document.getElementsByTagName("body")[0];
+		var tbl = document.createElement("table"); 
+		var tblH = document.createElement("thead");
+		var row = document.createElement("tr");
+		var cell = document.createElement("th"); 
+		
+		row.appendChild(cell); 		
+		for (var i = 0; i < data2.length; i++) { 
+			var cell = document.createElement("th"); 			
+			var img = document.createElement("img");
+			img.src = "../images/02/list_" + data2[i][4] + ".png";
+			cell.appendChild(img);
+			cell.appendChild( document.createElement( 'br' ) );
+			var txtCell = document.createTextNode(data2[i][2]);
+			cell.appendChild(txtCell);
+			row.appendChild(cell); 
+		}
+		tblH.appendChild(row); 
+		tbl.appendChild(tblH); 
+		
+		var tblB = document.createElement("tbody");
+		
+		for (key in titles) {
+			var row = document.createElement("tr");
+			var cell = document.createElement("th"); 
+			var txtCell = document.createTextNode(titles[key]);
+			cell.appendChild(txtCell); 
+			row.appendChild(cell); 
+			for (var i = 0; i < data2.length; i++) { 
+				var cell = document.createElement("td"); 
+				var txtCell = document.createTextNode(data2[i][key]);
+				cell.appendChild(txtCell); 
+				row.appendChild(cell); 
+			}
+			tblB.appendChild(row); 
+			
+		}
+		tbl.appendChild(tblB); 
+		body.appendChild(tbl);
+		tbl.setAttribute("class", "table2");
+	}
+
+	</script>
+
+</head>
+<body onload="SetResult();">
+<div hidden>
+		<textarea>
+pid,bid,pname,cm,short_pname,series,color,size,weight,running_time_stop,running_time_call,display_kind,display_inch,display_dot,valid_pixels,ccd,rec_pixels,shake,movie,hdmovie,fullhd,os,memory,cpu,xi,wifi,tethering,flash,oSeg,innerMemory,infrared,bluetooth,waterprotect,dustprotect,gps,wallet,oversea,copy1,copy2,copy3
+,,MEDIAS X N-04E,docomo,N-04E,with,BLUE、WHITE,幅 約68×高さ 約136×厚さ 約10.4,約155,3G：約450 GSM：約370 LTE：約400,3G：約560 GSM：約610,HD 有機EL／－,約約4.7／－,720×1280／－,約1310万画素／約130万画素,CMOS／CMOS,約1300万画素／約130万画素,○,○,○,○,Android（TM） 4.1,2GB,APQ8064 1.5GHz（Quad Core）,○,○,○,,○,microSD（2GB）／ microSDHC（32GB）,○,○,○/○,○,○,○,○,有機ELディスプレイ&クアッドコアCPUなど、納得のハイクオリティスペック,1310万画素高感度の瞬撮カメラ（R）で、その瞬間の感動をすぐにシェア,ブルーライトカットモードなど、こだわりの機能と2WAYで使えるおくだけ充電対応
+,,Xperia(TM) Z SO-02E,SO-02E,SO-02E,next,Black、White、Purple,幅 約71×高さ 約139×厚さ 約7.9,約146,3G：約480 GSM：約380 LTE：約420,3G：約640 GSM：約580,フルHD TFT液晶／－,約5.0／－,1080×1920／－,約1310万画素／約220万画素,CMOS／CMOS,約1280万画素／約210万画素,○,○,○,○,Android（TM） 4.1,2GB,APQ8064 1.5GHz（Quad Core）,○,○,○,,○,microSD（2GB）／ microSDHC 32GB／microSDXC 64GB,○,○,○/○,○,○,○,○,先進的なフラットボディに、最先端テクノロジーから基本機能まで惜しみなく搭載。,“感じる”美しさを手のひらに。大画面フルHDディスプレイ。,ソニーの最新技術を結集したカメラ、NFC機器連携＆“WALKMAN”アプリケーション
+,,ARROWS X F-02E,docomo,F-02E,next,Black、White,幅 約69×高さ 約140×厚さ 約10.3,約157,3G：約620 GSM：約420 LTE：約400,3G：約520 GSM：約690,フルHD TFT液晶／－,約5.0／－,1080×1920／－,約1630万画素／約130万画素,CMOS／CMOS,約1600万画素／約120万画素,○,○,○,○,Android(TM) 4.1,2GB,nVidia AP37 Max 1.7GHz（Quad Core）,○,○,○,,○,microSD 2GB／microSDHC 32GB／microSDXC 64GB,○,○,○/○,○,○,○,○,最先端技術の1.7GHzクアッドコアCPU＆超美麗1630万画素カメラ搭載！,息を呑む超高精細映像！5.0インチフルHDディスプレイ搭載！,あなたを見守り最適な使いやすさを提供する「ヒューマンセントリックエンジン」搭載！
+,,Ascend D2 HW-03E,HW-03E ,HW-03E,next,White,幅 約67×高さ 約133×厚さ 約9.9,約140,3G：未定 GSM：未定,3G：未定 GSM：未定,フルHD TFT液晶／－,約4.7／－,720×1280／－,,,,,,,,,,,,,,,,,,,,,,,,濡れた手でも快適に操作できる水滴クリアタッチパネル搭載、4.7インチHDディスプレイ。,国内最速 Xi 112.5Mbps対応、クアッドコアCPU搭載で快適・快速,明るいレンズ採用の高感度カメラと、シームレスで洗練されたデザイン
+,,ELUGA X P-02E,P-02E,P-02E,next,Blue Green、Black,幅 約68×高さ 約139×厚さ 約9.9,約152,3G：約400 GSM：約320 LTE：約370,3G：約590 GSM：,フルHD TFT／－,約5.0／－,1080×1920／－,約1320万画素／約130万画素,CMOS／CMOS,約1270万画素／約120万画素,○,○,○,○,Android(TM) 4.1,2GB,APQ8064 1.5GHz（Quad Core）,○,○,○,,○,microSD（2GB）／ microSDHC（32GB）／microSDXC（64GB）,○,○,○/○,○,○,○,○,フルHDの映像を約5.0インチの大画面で楽しめる。しかも幅約68mmで持ちやすい,便利機能全部入りに加え、大容量バッテリー・片手での操作も快適なUIを搭載,パナソニックのスマート家電とつながる！録画したフルHD番組もきれいな画質で楽しめる
+,,MEDIAS W N-05E,docomo,N-05E,next,Black,幅 約64×高さ 約136×厚さ 約12.2,約183,3G：約630 GSM：約480,3G：約500 GSM：680,QHD TFT液晶／QHD TFT液晶,約4.3／約4.3,540×960／540×960,,,,,,,,,,,,,,,,,,,,,,,,ダブルディスプレイならではの大画面と携帯性を両立！開けば5.6インチ大画面、閉じればスリムな新形状,ダブルディスプレイだから快適で新しい操作性！2つの画面を活かした2画面対応アプリも充実,ダブルディスプレイだから大きなキーボードで文字入力も快適！半分閉じて置けば動画視聴にも便利
+,,Optimus G Pro L-04E,docomo,L-04E,next,Platinum White、Indigo Black,幅 約70×高さ 約139×厚さ 約10,約160,3G：未定 GSM：未定,3G：未定 GSM：未定,フルHD　TFT液晶／－,約5.0／－,1080×1920／－,,,,,,,,,,,,,,,,,,,,,,,,迫力の臨場感＆超高感度を実現するTrue Full HD IPSディスプレイ搭載,急速充電対応3000ｍAhバッテリー＆省電力クアッドコアCPUで抜群の使いやすさ,Webを見ながらメモなどの「ながら操作」や、アウト／インカメラの同時撮影など新しい楽しさ！
+,,Xperia(TM) Tablet Z SO-03E,SO-03E,SO-03E,tablet,White、Black,幅 約266×高さ 約172×厚さ 約6.9,約495,3G：未定 GSM：未定 LTE：未定,,WUXGA TFT,約10.1,1920×1200,約810万画素／約220万画素,CMOS／CMOS,,,,,,,,,○,○,○,,○,microSD（最大2GB)／microSDHC（最大32GB)／microSDXC（64GB),,,,,,,,薄型軽量を追求した洗練されたデザインと、究極のエンタテインメント体験を実現,充実の機能で快適な操作を実現。NFCを搭載し、様々な機器連携がよりスムーズに,ソニーならではの技術が、ハイクオリティな、観る。聴く。撮る。を外出先でも実現
+,,dtab,docomo,dtab,tablet,Aluminum Silver,幅 約257×高さ 約176×厚さ 約9.9,約610,3G：未定 GSM：未定,3G：未定 GSM：未定,WXGA TFT液晶／－,約10.1／－,280×800／－,,,,,,,,,,,,,,,,,,,,,,,,映像からショッピングまで、dマーケットを便利に、簡単に使える独自のホーム画面,快適操作を実現するクアッドコアCPU、Android4.1搭載Wi-Fiタブレット,「しゃべってコンシェル」「フォトコレクション」などドコモクラウドのサービスにも対応
+,,スマートフォン for ジュニア SH-05E,docomo,SH-05E,junior,Blue、Pink、White,幅 約63×高さ 約117×厚さ 約10.6,約120,3G：約450 GSM：約370 LTE：約290,3G：約480 GSM：,QHD CG Silicon／－,約4.7／－,540×960／－,約1210万画素／約32万画素,CMOS／CMOS,約1200万画素／約31万画素,○,○,○,○,Android(TM) 4.0,1GB,MSM8960 1.5GHz（Dual Core）,○,,,,,microSD（2GB）／ microSDHC（32GB）／microSDXC（64GB）,○,○,○/○,○,○,○,○,初めてのスマートフォンをあんしん・あんぜんに利用できる機能が充実,持ちやすいラウンドフォルムに1210万画素カメラ、「Xi」（クロッシィ）対応など大満足の高機能を搭載,インターネットやお役立ちアプリで楽しく学べる・使えるスマートフォン
+,,AQUOS PHONE EX SH-04E ,SH-04E,SH-04E,with,Pink、Black、White,幅 約128×高さ 約64×厚さ 約10.9,約145,3G：約370 GSM：約340 LTE：約350,3G：約530 GSM：約580,HD TFT／－,約4.5／－,720×1280／－,約1310万画素／約120万画素,CMOS／CMOS,約1280万画素／約120万画素,○,○,○,○,Android（TM） 4.1,2GB,APQ8064 1.5GHz（Quad Core）,○,○,○,,○,microSD 2GB／microSDHC 32GB／microSDXC 64GB,○,○,○/○,○,○,○,○,高級感あふれる洗練されたデザインと使い心地抜群の持ちやすさ,シャッターチャンスもブレずにきれい！トリプル手ブレ対策1310万画素カメラ,先進の操作性を誇るクアッドコアCPU＆スマホライフを広げる多彩な機能
+		</textarea>
+	</div>
+<div>
+</div> 
+</body>
+</html>

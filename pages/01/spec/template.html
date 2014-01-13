@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>[pname]</title>	
+	<script src="../../../js/jquery-1.9.1.min.js"></script>
+	<script src="../../../js/jquery-ui-1.10.2.custom.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="../../../css/jquery-ui-1.10.2.custom.css">
+    <link type="text/css" rel="stylesheet" href="../../../css/spec.css">
+    <script>
+	$(function() {
+		$( "#tabs" ).tabs();
+		// Hover states on the static widgets
+		$( "#dialog-link, #icons li" ).hover(
+			function() {
+				$( this ).addClass( "ui-state-hover" );
+			},
+			function() {
+				$( this ).removeClass( "ui-state-hover" );
+			}
+		);
+	});
+	</script>
+
+</head>
+<body>
+<div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">基本スペック</a></li>
+		<li><a href="#tabs-2">カメラスペック</a></li>
+		<li><a href="#tabs-3">詳細スペック</a></li>
+	</ul>
+	<div id="tabs-1">
+
+<table>
+  <tbody>
+  <tr>
+    <th>カラーバリエーション</th>
+    <td>[color]</td>
+  </tr>
+  <tr>
+    <th>サイズ（mm）</th>
+    <td>[size]</td>
+  </tr>
+  <tr>
+    <th>質量（g）</th>
+    <td>[weight]</td>
+  </tr>
+  <tr>
+    <th>連続待受時間（静止時）<br>
+      （時間）</th>
+    <td>[running_time_stop]</td>
+  </tr>
+  <tr>
+    <th>連続通話時間（音声通話時）<br>
+      （分）</th>
+    <td>[running_time_call]</td>
+  </tr>
+  <tr>
+    <th>ディスプレイ種類<br>
+      （メインディスプレイ／サブディスプレイ）</th>
+    <td>[display_kind]</td>
+  </tr>
+  <tr>
+    <th>ディスプレイサイズ（インチ）<br>
+      （メインディスプレイ／サブディスプレイ）</th>
+    <td>[display_inch]</td>
+  </tr>
+  <tr>
+    <th>ディスプレイサイズ（ドット数）<br>
+      （メインディスプレイ／サブディスプレイ）</th>
+    <td>[display_dot]</td>
+  </tr>
+  </tbody></table>
+	</div>
+	<div id="tabs-2">
+	<table>
+  <tbody>
+  <tr>
+    <th>有効画素数（メイン／サブ）</th>
+    <td>[valid_pixels]</td>
+  </tr>
+  <tr>
+    <th>撮影素子（メイン／サブ）</th>
+    <td>[ccd]</td>
+  </tr>
+  <tr>
+    <th>記録画素数（メイン／サブ）</th>
+    <td>[rec_pixels]</td>
+  </tr>
+  <tr>
+    <th>手ぶれ</th>
+    <td>[shake]</td>
+  </tr>
+  <tr>
+    <th>動画撮影</th>
+    <td>[movie]</td>
+  </tr>
+  <tr>
+    <th>HDムービー撮影</th>
+    <td>[hdmovie]</td>
+  </tr>
+  <tr>
+    <th>フルHD</th>
+    <td>[fullhd]</td>
+  </tr>
+  </tbody></table>
+	</div>
+	<div id="tabs-3">
+		<table>
+	  
+	  <tbody><tr>
+	    <th>OS</th>
+	    <td>[os]</td>
+	  </tr>
+	  <tr>
+	    <th>内部メモリ</th>
+	    <td>[memory]</td>
+	  </tr>
+	  <tr>
+	<th>CPU</th>
+	<td>[cpu]</td>
+	</tr>
+	  <tr>
+	    <th>Xi</th>
+	    <td>[xi]</td>
+	  </tr>
+	  <tr>
+	    <th>Wi-Fi</th>
+	    <td>[wifi]</td>
+	  </tr>
+	  <tr>
+	    <th>テザリング</th>
+	    <td>[tethering]</td>
+	  </tr>
+	  <tr>
+	    <th>Flash対応</th>
+	    <td>[flash]</td>
+	  </tr>
+	  <tr>
+	    <th>ワンセグ</th>
+	    <td>[flash]</td>
+	  </tr>
+	  <tr>
+	    <th>外部メモリ</th>
+	    <td>[innerMemory]</td>
+	  </tr>
+	  <tr>
+	    <th>赤外線通信</th>
+	    <td>[infrared]</td>
+	  </tr>
+	  <tr>
+	    <th>Bluetooth（R)</th>
+	    <td>[bluetooth]</td>
+	  </tr>
+	  <tr>
+	    <th>防水／防じん</th>
+	    <td>[waterprotect]／[dustprotect]</td>
+	  </tr>
+	  <tr>
+	    <th>GPS</th>
+	    <td>[dustprotect]</td>
+	  </tr>
+	  <tr>
+	    <th>おサイフケータイ</th>
+	    <td>[dustprotect]</td>
+	  </tr>
+	  <tr>
+	    <th>海外使用</th>
+	    <td>[oversea]</td>
+	  </tr>
+	  </tbody>
+	  </table>
+	</div>
+</div>
+ 
+ 
+</body>

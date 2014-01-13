@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="../../js/jquery-1.9.1.min.js"></script>
+<script src="../../js/video.js"></script>
+<link href="../../css/video-js.css" rel="stylesheet" type="text/css">
+
+<script>
+	var get = new Object();
+	function getRequest(){
+	  if(location.search.length > 1) {
+	    var ret = location.search.substr(1).split("&");
+	    for(var i = 0; i < ret.length; i++) {
+	      var r = ret[i].split("=");
+	      get[r[0]] = r[1];
+	    }
+	    return get;
+	  } else {
+	    return false;
+	  }
+	}
+	function SetSrc(){
+		getRequest();
+		var fileName = "../../movies/" + get['id'] + ".mp4";
+		$('#cm').attr("src", fileName);
+		console.log("page:cm," + get['id'] + "Ä¶");
+	}
+</script>
+<style type="text/css">
+
+#divCM { 
+	position: relative;
+	left:100px;
+	color: red; 
+	
+}
+
+</style>
+
+</head>
+<body onload="SetSrc();">
+<div id="divCM">
+	<video id="cm" controls type="video/mp4" autoplay width="900px" height="500px"></video>
+</div>
+</body>
+</html>

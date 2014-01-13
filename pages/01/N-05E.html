@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>MEDIAS W N-05E</title>	
+   	<link rel="stylesheet" type="text/css" href="../../css/01_main.css">
+    <link type="text/css" rel="stylesheet" href="../../css/reset.css">		
+    <link type="text/css" rel="stylesheet" href="../../css/rcarousel.css">
+    <link rel="stylesheet" type="text/css" href="../../lib/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+	<script src="../../js/jquery-1.6.2.min.js"></script>
+	<script src="../../js/jquery.easing.1.3.js"></script>
+	<script type="text/javascript" src="../../js/jquery.ui.core.js"></script>
+	<script type="text/javascript" src="../../js/jquery.ui.widget.js"></script>
+	<script type="text/javascript" src="../../js/jquery.ui.rcarousel.js"></script>
+	<script type="text/javascript" src="../../lib/fancybox/jquery.fancybox-1.3.4.js"></script>
+	<script type="text/javascript">
+		jQuery(function($) {
+			$("#carousel ").rcarousel({
+				margin: 0
+			});
+			
+			$("#ui-carousel-next" )
+				.add( "#ui-carousel-prev" )
+				.hover(
+					function(){
+						$( this ).css("opacity", 0.7 );
+					},
+					function(){
+						$( this ).css("opacity", 1.0 );
+					}
+				);
+		});
+	$(function(){
+		$("a[id^=framepage]").fancybox({
+			'width'		: '95%',
+			'height'	: '99%',
+		        'autoScale'     : true,
+			'transitionIn'	: 'none',
+			'transitionOut'	: 'none',
+			'type'		: 'iframe',
+			'transitionIn'	: 'elastic',
+			'transitionOut'	: 'elastic',
+			'easingIn'      : 'easeOutBack',
+			'easingOut'     : 'easeInBack'
+		});
+	});
+	</script>
+
+</head>
+<body>
+	<div class="head next">
+	</div>
+	<div id="main">
+		<div class="main_left main_next">
+			<div class="main_product_title">
+				<img src = "../../images/01/N-05E/text.png"/>
+			</div>
+			<div class="main_product_slide">
+					<div id="container">
+						<div id="carousel">
+							<a href="#" id="000" onclick="$('#big_image').attr('src', '../../images/01/N-05E/' + this.id + '.png');" >
+								<img class ="thumb" src="../../images/01/N-05E/000.png" onmouseclick="ChangeImage();"/ >
+							</a>
+							<a href="#" id="001" onclick="$('#big_image').attr('src', '../../images/01/N-05E/' + this.id + '.png');" >
+								<img class ="thumb" src="../../images/01/N-05E/001.png" onmouseclick="ChangeImage();"/ >
+							</a>
+							<a href="#" id="002" onclick="$('#big_image').attr('src', '../../images/01/N-05E/' + this.id + '.png');" >
+								<img class ="thumb" src="../../images/01/N-05E/002.png" onmouseclick="ChangeImage();"/ >
+							</a>
+							<a href="#" id="003" onclick="$('#big_image').attr('src', '../../images/01/N-05E/' + this.id + '.png');" >
+								<img class ="thumb" src="../../images/01/N-05E/003.png" onmouseclick="ChangeImage();"/ >
+							</a>
+						</div>
+						<a href="#" id="ui-carousel-next"><span>next</span></a>
+						<a href="#" id="ui-carousel-prev"><span>prev</span></a>
+					</div>
+				</div>
+			<div class="main_product_image">
+				<img id="big_image" src = "../../images/01/N-05E/000.png"/>
+			</div>
+		</div>
+		<div class="main_right">
+			<div class="main_right_title">主な特徴
+			</div>
+			<div class="main_right_table">
+			<table>
+				<tbody>
+				<tr>
+				  <th><img src="../../images/01/right_icon.gif"/></td>
+				  <td>ダブルディスプレイならではの大画面と携帯性を両立！開けば5.6インチ大画面、閉じればスリムな新形状</td>
+				</tr>
+				<tr>
+				  <th><img src="../../images/01/right_icon.gif"/></td>
+				  <td>ダブルディスプレイだから快適で新しい操作性！2つの画面を活かした2画面対応アプリも充実</td>
+				</tr>
+				<tr>
+				  <th><img src="../../images/01/right_icon.gif"/></td>
+				  <td>ダブルディスプレイだから大きなキーボードで文字入力も快適！半分閉じて置けば動画視聴にも便利</td>
+				</tr>
+				</tbody>
+			</table>
+			</div>
+			<div class="main_right_icons xi_off">
+			</div>
+			<div class="main_right_icons wifi_off">
+			</div>
+			<div class="main_right_icons waterproofing_off">
+			</div>
+			<div class="main_right_icons wallet_off">
+			</div>
+			<div class="main_right_icons oneseg_off">
+			</div>
+			<div class="main_right_icons tethering_off">
+			</div>
+			<div class="main_right_buttons">
+				<div class="main_right_spec">
+					<a id="framepage1" href="spec/N-05E.html">
+						<img src="../../images/01/spec.gif"/>
+					</a>
+				</div>
+				<div class="main_right_cm">
+					<a id="framepage2" href="cm.html?id=docomo">
+						<img src="../../images/01/cm.gif"/>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+      
+</body>
+</html>
+
+
