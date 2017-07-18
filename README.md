@@ -1,4 +1,4 @@
 # JqueryComparedsdsds
 ## aaaa
-aa('#api')
+(aa)['./#api']
 ## test
